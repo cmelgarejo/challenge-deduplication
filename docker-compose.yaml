@@ -1,13 +1,11 @@
 services:
-  service-db:
-    image: timescale/timescaledb:latest-pg13
+  db:
+    image: timescale/timescaledb:latest-pg15
     restart: unless-stopped
     ports:
       - ${DATABASE_PORT_EXTERNAL}:${DATABASE_PORT_INTERNAL}
     volumes:
       - ./:/challenge/
-    env_file:
-      - .docker-compose.env
     environment:
       - POSTGRES_DB=${DATABASE_POSTGRES_DB}
       - POSTGRES_USER=${DATABASE_POSTGRES_USER}
